@@ -1,10 +1,15 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <AppNavbar />
+  <div class="px-8">
+    <router-view />
+  </div>
+  <VueQueryDevtools />
 </template>
+
+<script lang="ts" setup>
+import { VueQueryDevtools } from "@tanstack/vue-query-devtools";
+import AppNavbar from "@/components/AppNavbar.vue";
+</script>
 
 <style>
 #app {
