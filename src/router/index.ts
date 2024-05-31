@@ -27,6 +27,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "orders",
     component: () => import("../pages/orders/OrdersList.vue"),
   },
+  {
+    path: "/:catchAll(.*)",
+    name: "notFound",
+    component: () => import("../pages/NotFound.vue"),
+  },
 ];
 
 const router = createRouter({
