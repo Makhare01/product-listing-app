@@ -8,6 +8,7 @@ export type Product = {
   imageUrl: string;
   stock: number;
   category: string;
+  images: Array<string>;
 };
 
 export type ProductResponse = ListPagination & { products: Array<Product> };

@@ -23,16 +23,18 @@
       />
     </div>
 
-    <hr class="my-3" />
-    <div class="flex flex-col items-end">
+    <hr v-show="cartStore.items.length > 0" class="my-3" />
+
+    <div v-show="cartStore.items.length > 0" class="flex flex-col items-end">
       <p class="text-xl font-bold text-end">
         Total price: ${{ cartStore.getTotalPrice }}
       </p>
 
       <button
         class="w-[200px] mt-5 rounded p-2 bg-green-400 hover:bg-green-500"
+        @click="router.push('checkout')"
       >
-        Checkout
+        Checkout order
       </button>
     </div>
   </div>
@@ -41,6 +43,7 @@
 <script lang="ts" setup>
 import CartItem from "@/components/cart/CartItem.vue";
 import { useCartStore } from "@/stores";
+import router from "@/router";
 
 const cartStore = useCartStore();
 </script>

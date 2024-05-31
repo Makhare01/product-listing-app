@@ -17,6 +17,16 @@ const routes: Array<RouteRecordRaw> = [
     name: "cart",
     component: () => import("../pages/cart/CartPage.vue"),
   },
+  {
+    path: "/checkout",
+    name: "checkout",
+    component: () => import("../pages/checkout/CheckoutPage.vue"),
+  },
+  {
+    path: "/orders",
+    name: "orders",
+    component: () => import("../pages/orders/OrdersList.vue"),
+  },
 ];
 
 const router = createRouter({

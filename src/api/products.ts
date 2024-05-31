@@ -1,7 +1,7 @@
 import { Product, ProductResponse } from "@/types";
 import axios from "axios";
 
-const base_url = process.env.VUE_APP_API_BASE_URL;
+export const base_url = process.env.VUE_APP_API_BASE_URL;
 
 type GetProductsListInput = {
   page: number;

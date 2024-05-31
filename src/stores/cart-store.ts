@@ -1,15 +1,18 @@
 import { Product } from "@/types";
 import { defineStore } from "pinia";
+import { useStorage } from "@vueuse/core";
+
+const STORE_NAME = "cart-store";
 
 export type RootState = {
   items: Array<{ count: number; item: Product }>;
 };
 
-export const useCartStore = defineStore("cart-store", {
+export const useCartStore = defineStore(STORE_NAME, {
   state: () =>
     ({
-      items: [],
-    } as RootState),
+      items: useStorage(STORE_NAME, []),
+    } as unknown as RootState),
 
   getters: {
     isInCart(state) {

@@ -19,26 +19,35 @@
       </div>
 
       <div class="h-full flex flex-col justify-between items-end">
-        <img
-          src="../../assets/trash.png"
-          alt="Trash icon"
-          class="w-6 h-6 cursor-pointer"
-          @click="emit('removeItem')"
-        />
+        <template
+          v-if="
+            thisInstance?.vnode?.props?.onDecreaseItemCount ||
+            thisInstance?.vnode?.props?.onIncreaseItemCount ||
+            thisInstance?.vnode?.props?.onRemoveItem
+          "
+        >
+          <img
+            src="../../assets/trash.png"
+            alt="Trash icon"
+            class="w-6 h-6 cursor-pointer"
+            @click="emit('removeItem')"
+          />
 
-        <CartItemButtons
-          :count="count"
-          :stockCount="item.stock"
-          @decrease="emit('decreaseItemCount')"
-          @increase="emit('increaseItemCount')"
-        />
+          <CartItemButtons
+            :count="count"
+            :stockCount="item.stock"
+            @decrease="emit('decreaseItemCount')"
+            @increase="emit('increaseItemCount')"
+          />
+        </template>
+        <p v-else class="text-md font-bold">{{ count }}X</p>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits } from "vue";
+import { defineProps, defineEmits, getCurrentInstance } from "vue";
 import { Product } from "@/types";
 import CartItemButtons from "./CartItemButtons.vue";
 
@@ -49,4 +58,6 @@ const emit = defineEmits([
   "decreaseItemCount",
   "increaseItemCount",
 ]);
+
+const thisInstance = getCurrentInstance();
 </script>

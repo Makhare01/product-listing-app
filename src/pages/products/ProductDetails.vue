@@ -4,7 +4,8 @@
     <h1 v-else-if="isError">{{ error?.message }}</h1>
     <div v-else-if="data" class="flex items-stretch">
       <div class="w-1/2">
-        <img :src="data.imageUrl" alt="Product image" />
+        <!-- <img :src="data.imageUrl" alt="Product image" class="w-[500px]" /> -->
+        <ProductGallery :images="[data.imageUrl, ...data.images]" />
       </div>
       <div class="w-1/2 flex flex-col items-start justify-between flex-1">
         <div class="w-full flex flex-col gap-2 items-start">
@@ -52,6 +53,7 @@ import { useCartStore } from "@/stores";
 import { useQuery } from "@tanstack/vue-query";
 import clsx from "clsx";
 import { useRoute } from "vue-router";
+import ProductGallery from "@/components/ProductGallery.vue";
 
 const router = useRoute();
 const cartStore = useCartStore();
